@@ -15,6 +15,7 @@ COMPILE/RUN INSTRUCTIONS:
 4a. Make sure your EC2 instance is running and that the host ip in "tcp_client.py" is changed to your EC2 instance
 4. Run "python3 tcp_client.py" in the other
 5. Watch server-side in a browser (type in your IP into the url) for matplotlib.pyplot figure showing the Neural Network's prediction of the article of clothing in the image "new_img.jpg". (a sample image is shown in the repository)
+5a. "index.html" is a file I used to format and refresh the "prediction_plot.png" in browser!
 
 Hope you enjoy! Thought it was inventive that the NN classified my sneaker as a bag, maybe the fashion trend will ensue this discovery! :^)
 
