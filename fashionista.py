@@ -1,6 +1,7 @@
 import cv2
 import json
 import os
+import random
 import warnings
 import pickle
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -13,8 +14,10 @@ import matplotlib.pyplot as plt
 
 
 
-def proc_new_img(img):
-
+def proc_new_img():
+    dirname = 'test_images'
+    filename = random.choice(os.listdir(dirname))
+    img = os.path.join(dirname, filename)
     WIDTH = 28
     HEIGHT = 28
     dim = (WIDTH, HEIGHT)
@@ -65,14 +68,14 @@ def fashion_nn():
 
 
 	# Train the model with 3 epochs
-	model.fit(train_imgs, train_labels, epochs=5)
+	model.fit(train_imgs, train_labels, epochs=3)
 
 
 	# Evaluate and print metrics
 	#model_loss, 
 
 
-	old_img = proc_new_img("new_img.jpg")
+	old_img = proc_new_img()
 	print(old_img.shape)
 	img_file = np.expand_dims(old_img,0)
 
@@ -85,11 +88,15 @@ def fashion_nn():
 
 	predictionary = {
 		'probabilities': prediction_single[0],
+        'prediction': class_names[np.argmax(prediction_single[0])],
 		'img': old_img,
 		'recall': 0,
 		'precision': 0
 	}
 
 	serial_probs = pickle.dumps(predictionary['probabilities'])
-	serial_img = pickle.dumps(predictionary['img'])
-	return serial_probs, serial_img
+	
+
+    #serial_img = pickle.dumps(predictionary['img'])
+
+	return serial_probs

@@ -12,14 +12,14 @@ import tkinter as tk
 import cv2
 import numpy as np
 
-HOST, PORT = "localhost", 9999
+HOST, PORT = "18.222.120.186", 5007
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
 # img = proc_new_img("new_img.jpg")
 
-serial_tx, _  = fashion_nn()
+serial_tx = fashion_nn()
 
 try:
     s.connect((HOST, PORT))
